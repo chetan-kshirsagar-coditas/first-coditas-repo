@@ -374,15 +374,17 @@
 // console.log(sortArray([5, 8, 6, 3, 4]));
 
 
-function comp(array1, array2){
-   if(array2 === null || array1 === null) return false;
-  let squaredArray = [];
-  for(let i = 0; i < array1.length - 1; i++){
-   squaredArray[i+1]= array1[i] * array1[i];
-  }
-  squaredArray[0] = array1[array1.length - 1] * array1[array1.length - 1];
-  return squaredArray.join("") === array2.join("");
-}
+// function comp(array1, array2){
+//    if(array2 === null || array1 === null) return false;
+//   let squaredArray = [];
+//   for(let i = 0; i < array1.length - 1; i++){
+//    squaredArray[i+1]= array1[i] * array1[i];
+//   }
+//   squaredArray[0] = array1[array1.length - 1] * array1[array1.length - 1];
+//   return squaredArray.join("") === array2.join("");
+// }
 // a = [121, 144, 19, 161, 19, 144, 19, 11]  
 // b = [121, 14641, 20736, 361, 25921, 361, 20736, 361]
-console.log(comp(null,null));
+// console.log(comp(null,null));
+
+console.log(typeof 87);
