@@ -1,4 +1,4 @@
-# Section 1. Getting started
+# 🔖 Section 1. Getting started
 ### What is JavaScript ?
 JavaScript is a programming language.
 It's used to make webpages dynamic and interactive. 
@@ -8,7 +8,7 @@ It has ECMA standard. Provides the core funcionality like ```DOM``` ```BOM```.
 
 JavaScript engines: ```V8``` in Chrome, ```SpiderMonkey``` in Firefox, and ```JavaScriptCore``` in Safari.
 
-# Section 2. Fundamentals
+# 🔖 Section 2. Fundamentals
 ### Syntax
 `Whitespace`:
 Use whitespaces to format your code.
@@ -35,6 +35,57 @@ Answers : What kind of data are you working with ?
 
 primitive  : `number` `bigint` `string` `boolean` `null` `undefined` `symbol`  
 complex : `object`
+
+### Numeric Separator
+`const budget = 1000000000;`  
+`const budget = 1_000_000_000;` Readable
+
+### Primitive vs. Reference Values  
+<!-- ![alt text](image.png)   -->
+JS stores primitive values on `stack`.
+and  objects and functions on the `heap`.  
+
+# 🔖 Section 3. Operators
+Arithmetic : `+` `-` `*` `/` `%`  
+Unary : `+X` `-X` `X++` `X--` `++X` `--X`  
+Comparison : `<` `>` `<=` `>=` `==` `!=`  
+Logical : `||` `&&` `!`
+
+# 🔖 Section 4. Control flow Statements
+`if`  `if...else`  `if...else...if`
+### Ternary Operator  
+`condition` ? `true` : `false`;
+### switch
+`replace multiple if statements`
+### while
+`runs as long as a specified condition is true`
+### do-while
+`executes code at least once`
+### for
+`can specify how many times it should run`
+### break
+`terminates a loop`
+### continue
+`skip the current iteraion`
+### Comma Operator
+`leftExpression, rightExpression` -  `Evaluates from left and returns from right`
+
+# 🔖 Section 5. Functions  
+Reusable block of code.
+```
+function add(a, b) {
+    return a + b; 
+}
+```
+`arguments` is a array-like object, contains all the arguments.
+
+ `Hoisting` means all the declarations are move to top of the code by interpreter.
+
+
+
+
+
+
 
 
 
