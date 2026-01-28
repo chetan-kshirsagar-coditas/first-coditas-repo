@@ -109,12 +109,27 @@ function Person(firstName, lastName) {
 }
 ```
 ```
-let person = new Person('John','Doe');
+const person = new Person('Chetan','Kshirsagar');
 ```
 what `new` does ?  
-Create a new empty object and assign it to the this variable.
-Assign the arguments 'John' and 'Doe' to the firstName and lastName properties of the object.
-Return the this value.
+//notebook snapshot
+
+### Prototype  
+//notebook snapshot
+
+### Constructor / Prototype pattern
+
+```
+Initialize the object properties in the constructor function and define methods and properties that can be shared by all instances in the prototype object.
+```
+### Prototypal Inheritance
+
+```
+JavaScript uses the prototypal inheritance instead of classical inheritance. ES5 has Object.create(proto, [extraProperties]).
+```
+```
+Note : You should use the newer ES6 class and extends keywords to implement inheritance. It’s much simpler.
+```
 
 
 
