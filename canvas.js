@@ -339,7 +339,7 @@
 //             finalPrimes.push(i);
 //          }
 //          }
-         
+
 //       }
 //    }
 //    return finalPrimes;
@@ -387,4 +387,320 @@
 // b = [121, 14641, 20736, 361, 25921, 361, 20736, 361]
 // console.log(comp(null,null));
 
-console.log(typeof 87);
+// console.log(typeof 87);
+
+
+// function duplicateCount(text){
+//   let map = new Map();
+//   let dupCounter = 0;
+//   text = text.toLowerCase();
+//   for(let i = 0; i < text.length; i++){
+//     if(map.has(text[i])){
+//         map.set(text[i], map.get(text[i])+1);
+//     }else{
+//         map.set(text[i], 1);
+//     }
+//   }
+//   for(const value of map.values()){
+//     if(value > 1) dupCounter++;
+//   }
+//   return dupCounter;
+// }
+// console.log(duplicateCount("aabbcde"));
+
+
+// function deleteNth(arr,n){
+//   let maxOccurrence = n;
+//   let map = new Map();
+//   const filteredArray = [];
+//   for(let i = 0; i < arr.length; i++){
+//     if(map.has(arr[i])){
+//         if(map.get(arr[i]) < maxOccurrence){
+//             map.set(arr[i],map.get(arr[i])+1);
+//             filteredArray.push(arr[i]);
+//         }
+//     }else{
+//         map.set(arr[i],1);
+//         filteredArray.push(arr[i]);
+//     }
+//   }
+//  return filteredArray;
+// }
+// // [1,2,3,1,2,1,2,3] - > [1,2,3,1,2,3]
+// console.log(deleteNth([1,2,3,1,2,1,2,3],2));
+
+
+
+// function findUniq(arr) {
+//   // do magic
+//   let map = new Map();
+//   for(let i = 0; i < arr.length; i++){
+//     if(map.has(arr[i])){
+//         map.set(arr[i],map.get(arr[i])+1);
+//     }else{
+//         map.set(arr[i],1);
+//     }
+//   }
+
+//   for(const [key , value] of map){
+//     if(value === 1) return key;
+//   }
+// }
+// console.log(findUniq([ 0, 0, 0.55, 0, 0 ]));
+
+
+// function findEvenIndex(arr) {
+//     let fSum = 0;
+//     let sSum;
+//         for(let i = 0; i < arr.length - 1; i++){
+//             // const firstPart = arr.slice(0,i);
+//             // const secondPart = arr.slice(i+1,arr.length);
+//             // const firstPartSum = firstPart.reduce((sum ,ele) => sum + ele);
+//             // const secondPartSum = secondPart.reduce((sum ,ele) => sum + ele);
+//             // if(firstPartSum === secondPartSum) return i;
+
+//             sSum = arr.slice(i+1,arr.length).reduce((sum , ele)=>sum+ele);
+//             if(fSum === sSum) return i;
+//             fSum += arr[i];
+//         }
+//         // fSum += arr[arr.length - 1];
+//         if(fSum === 0){
+//             return arr.length - 1;
+//         }
+
+//     return -1;
+// }
+// // {1,2,3,4,3,2,1}
+// console.log(findEvenIndex([10,-80,10,10,15,35,20]));
+
+
+// function solution(str){
+//     const splitedStrArray = [];
+//    if(str.length % 2 === 0){
+//         for(let i = 2; i <= str.length; i += 2){
+//             splitedStrArray.push(str.slice(i-2,i));
+//         }
+//    }else{
+//         for(let i = 0; i < str.length - 2; i += 2){
+//             let ch = str[i] + str[i+1]; 
+//             splitedStrArray.push(ch);
+//         }
+//         splitedStrArray.push(str[str.length-1]+"_");
+//    }
+//    return splitedStrArray;
+// }
+// console.log(solution('abc'));
+
+// 'abc' =>  ['ab', 'c_']
+
+
+function isValidWalk(walk) {
+    const actualWalk = [];
+    actualWalk.push(walk[0])
+    for (let i = 1; i < walk.length; i++) {
+        if (actualWalk[actualWalk.length - 1] !== walk[i]) {
+            actualWalk.push(walk[i]);
+        }
+    }
+    return actualWalk.length === 10 ? true : false;
+}
+// console.log(isValidWalk(['n','n','n','s','n','s','n','s','n','s']));
+
+// function inArray(array1,array2){
+//   let pureArr = [];
+//   for(const str1 of array1){
+//     for(const str2 of array2){
+//         if(str2.includes(str1)){
+//             pureArr.push(str1);
+//             break;
+//         }
+//     }
+//   }
+//   return pureArr.sort();
+// }
+// a1 = ["arp", "live", "strong"]
+
+// a2 = ["lively", "alive", "harp", "sharp", "armstrong"]
+
+// returns ["arp", "live", "strong"]
+// console.log(inArray(["arp", "live", "strong"],["lively", "alive", "harp", "sharp", "armstrong"]));/
+
+
+
+function detectBruteForce(logs) {
+    let busted = [];
+
+    if (logs.length >= 3) {
+        for (let i = 0; i < logs.length; i++) {
+            logs[i] = logs[i].split(" ");
+        }
+            for(let i = 0; i < logs.length - 3; i++){
+                // console.log("fff");
+                
+            if( logs[i][1] === "LOGIN_FAIL" && logs[i+1][1] === "LOGIN_FAIL" && logs[i+2][1] === "LOGIN_FAIL" ){
+                // console.log("login gf");
+                
+                if(logs[i][0] === logs[i+1][0]){
+                    if(logs[i+1][0] === logs[i+2][0]){
+                    busted.push(logs[i][0]);
+                    }
+                }
+            }
+        }
+    } else {
+        return [];
+    }
+    return busted;
+}
+// logs = [
+//     "192.168.1.1 LOGIN_FAIL user=admin",
+//     "192.168.1.1 LOGIN_FAIL user=admin",
+//     "192.168.1.1 LOGIN_FAIL user=root",
+//     "10.0.0.5 LOGIN_FAIL user=test",
+//     "10.0.0.5 LOGIN_SUCCESS user=test"
+// ]
+// detect_brute_force(logs)  # ["192.168.1.1"]
+// console.log(detectBruteForce([
+//     "192.168.1.1 LOGIN_FAIL user=admin",
+//     "192.168.1.1 LOGIN_FAIL user=admin",
+//     "192.168.1.1 LOGIN_FAIL user=root",
+//     "10.0.0.5 LOGIN_FAIL user=test",
+//     "10.0.0.5 LOGIN_SUCCESS user=test"
+// ]));
+
+
+
+
+
+// function cleanString(s) {
+//   const orgString = [];
+//   s = s.split("");
+//   console.log(s);
+  
+//   for(let i of s){
+//     if(i !== "#"){
+//         orgString.push(i);
+//     }else{
+//         if(orgString.length > 0){
+//             orgString.pop();
+//         }
+//     }
+//   }
+//   return orgString.join("");
+// }
+// "abc#d##c"      ==>  "ac"
+// console.log(cleanString("abc#d##c"));
+
+
+
+// function goodVsEvil(good, evil){
+//     const goodWorth = [1, 2, 3, 3, 4, 10];
+//   const evilWorth = [1, 2, 2, 2, 3, 5, 10];
+  
+//   // Calculate Good's power
+//   const goodTotal = good.split(' ').reduce((sum, count, i) => sum + (count * goodWorth[i]), 0);
+  
+//   // Calculate Evil's power
+//   const evilTotal = evil.split(' ').reduce((sum, count, i) => sum + (count * evilWorth[i]), 0);
+  
+//   // Compare and return specific strings
+//   if (goodTotal > evilTotal) return "Battle Result: Good triumphs over Evil";
+//   if (evilTotal > goodTotal) return "Battle Result: Evil eradicates all trace of Good";
+//   return "Battle Result: No victor on this battle field";
+// }
+
+// console.log(goodVsEvil('1 1 1 1 1 1', '1 1 1 1 1 1 1'));
+
+
+// Hobbits: 1
+// Men: 2
+// Elves: 3
+// Dwarves: 3
+// Eagles: 4
+// Wizards: 10
+// On the side of evil we have:
+
+// Orcs: 1
+// Men: 2
+// Wargs: 2
+// Goblins: 2
+// Uruk Hai: 3
+// Trolls: 5
+// Wizards: 10
+
+
+function isValidIP(str) {
+//   if (!/^\d+\.\d+\.\d+\.\d+$/.test(str)) {
+//         return false;
+//     }
+    const octets = str.split('.');
+
+    for (const octet of octets) {
+        if (octet.length > 1 && octet.startsWith('0')) {
+            return false;
+        }
+        const num = Number(octet);
+        if (!(num >= 0 && num <= 255)) {
+            return false;
+        }
+
+        // if (!/^\d+$/.test(octet)) {
+        //     return false;
+        // }
+}}
+// console.log(isValidIP('123.456.789.0'));
+
+
+
+// https://www.codewars.com/kata/5353212e5ee40d4694001114/train/javascript
+
+
+// function rot13(message){
+//   //your code here
+//   let rotstr = "";
+//   for(let i = 0; i < message.length; i++){
+//     let charCode = message.charCodeAt(i);
+//     if( !(charCode >= 65 && charCode <= 90)){
+//         if( !(charCode >= 97 && charCode <=122)){
+//             rotstr += message[i];
+//             continue;
+//         }
+//     }
+//     let start = ( message[i] < 'Z' ) ? 65 : 97;
+//     let rotcode = charCode - start ; //0-25
+//     rotcode = (rotcode + 13) % 26 + start;
+//     rotstr += String.fromCharCode(rotcode);
+
+//   }
+//   return rotstr;
+// }
+// console.log(rot13("j]=%."));
+
+function groupAnagrams(words){
+    let temp =[... words];
+  for(let i = 0; i < temp.length; i++){
+    temp[i] = temp[i].split("").sort().join("");
+  }
+  let final = [];
+  let first = [];
+  for(let i = 0; i < words.length; i++){
+    first.push(words[i]);
+      for(let j = i + 1; j < temp.length; j++){
+        if(temp[i] === temp[j]){
+            first.push
+        }
+      }
+  }
+  return words;
+}
+
+// ["tsar", "rat", "tar", "star", "tars", "cheese"]
+
+// // output
+// [
+//   ["tsar", "star", "tars"],
+//   ["rat", "tar"],
+//   ["cheese"]
+// ]
+console.log(groupAnagrams(["tsar", "rat", "tar", "star", "tars", "cheese"]));
+
