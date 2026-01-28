@@ -71,7 +71,8 @@ Logical : `||` `&&` `!`
 `leftExpression, rightExpression` -  `Evaluates from left and returns from right`
 
 # 🔖 Section 5. Functions  
-Reusable block of code.
+Reusable block of code.  
+`Functions are first-class citizens because it can be stored, passed and returned.`
 ```
 function add(a, b) {
     return a + b; 
@@ -80,6 +81,42 @@ function add(a, b) {
 `arguments` is a array-like object, contains all the arguments.
 
  `Hoisting` means all the declarations are move to top of the code by interpreter.
+
+ ### Anonymous Functions
+ Function without a name. Lol
+ ```
+ (function () {
+   //anonymous function + IIFE
+})();
+```
+### Pass-By-Value & Pass-By-Reference
+`JavaScript passes all arguments to a function by values.`
+
+Argument's values get copied into parameters. `PBV`  
+Argument's ref get assigned to params. `PB-Ref` 
+
+### Recursive Function
+`Function is a recursive function if it calls itself inside its body.`
+
+# Section 6. Objects & Prototypes
+`When a function is a property of an object, it becomes a method.`  
+
+### Constructor Function
+```
+function Person(firstName, lastName) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+}
+```
+```
+let person = new Person('John','Doe');
+```
+what `new` does ?  
+Create a new empty object and assign it to the this variable.
+Assign the arguments 'John' and 'Doe' to the firstName and lastName properties of the object.
+Return the this value.
+
+
 
 
 

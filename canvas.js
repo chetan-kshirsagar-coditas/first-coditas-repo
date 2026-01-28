@@ -702,5 +702,4 @@ function groupAnagrams(words){
 //   ["rat", "tar"],
 //   ["cheese"]
 // ]
-console.log(groupAnagrams(["tsar", "rat", "tar", "star", "tars", "cheese"]));
-
+// console.log(groupAnagrams(["tsar", "rat", "tar", "star", "tars", "cheese"]));
