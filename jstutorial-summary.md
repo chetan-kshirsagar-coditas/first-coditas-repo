@@ -98,7 +98,7 @@ Argument's ref get assigned to params. `PB-Ref`
 ### Recursive Function
 `Function is a recursive function if it calls itself inside its body.`
 
-# Section 6. Objects & Prototypes
+# 🔖 Section 6. Objects & Prototypes
 `When a function is a property of an object, it becomes a method.`  
 
 ### Constructor Function
@@ -131,8 +131,50 @@ JavaScript uses the prototypal inheritance instead of classical inheritance. ES5
 Note : You should use the newer ES6 class and extends keywords to implement inheritance. It’s much simpler.
 ```
 
+### this
+```
+The this refers to the object that owns the function or method currently being executed.
+```
+```
+"use strict";
+//won't refer to the global object accidently (window/global)
+```
 
+### globalThis object
+```
+globalThis object that provides a standard way to access the global object across environments.
+```
 
+### Object Properties
+Data properties and Accessor properties.  
+`Data properties`
+```
+[[Configurarable]] -> can be redefined or removed.
+[[Enumerable]] -> can be returned in the for...in loop.
+[[Writable]] -> value of a property can be changed.
+[[Value]] -> contains the actual value of a property.
+```
+```
+'use strict';
+
+let person = {};
+
+Object.defineProperty(person, 'name', {
+    configurable: false,
+    value: 'Chetan Kshirsagar'
+});
+delete person.name; //won't work
+```
+`Accessor properties`
+```
+[[Get]] and [[Set]] attributes instead of [[Value]] and [[Writable]]
+```
+```
+Object.getOwnPropertyDescriptor(object, object.property) method allows you to get the descriptor object of a property.
+```
+```
+Object.defineProperty() or Object.defineProperties() methods. These methods can be used to change the attributes of a property.
+```
 
 
 
