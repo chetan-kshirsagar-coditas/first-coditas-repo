@@ -629,26 +629,7 @@
 // Wizards: 10
 
 
-// function isValidIP(str) {
-// //   if (!/^\d+\.\d+\.\d+\.\d+$/.test(str)) {
-// //         return false;
-// //     }
-//     const octets = str.split('.');
 
-//     for (const octet of octets) {
-//         if (octet.length > 1 && octet.startsWith('0')) {
-//             return false;
-//         }
-//         const num = Number(octet);
-//         if (!(num >= 0 && num <= 255)) {
-//             return false;
-//         }
-
-//         // if (!/^\d+$/.test(octet)) {
-//         //     return false;
-//         // }
-// }}
-// console.log(isValidIP('123.456.789.0'));
 
 
 
@@ -824,7 +805,7 @@
 // console.log(spinWords("Hey fellow warriors"));
 
 // function solve(n){
-  
+
 //   let pow = 1;
 //   while( (10**pow - 1) <= n ){
 //     pow++;
@@ -843,7 +824,7 @@
 // function validate(n){
 //     n = n.toString().split("");
 //     // console.log(n);
-    
+
 //   if(n.length % 2 === 0){
 //     for(let i = 0; i < n.length; i += 2){
 //         let num = parseInt(n[i]);
@@ -856,7 +837,7 @@
 //     }
 //   }
 // //   console.log(n);
-  
+
 //   let sum = n.reduce((s,e)=> s+parseInt(e));
 //   return sum % 10 === 0 ? true : false;
 // }
@@ -924,7 +905,7 @@
 
 // function toCamelCase(str){
 //     str = str.replace(/\p{P}/gu," ").split(" ");
-    
+
 //     // console.log(str);
 //     for(let i = 1; i < str.length; i++){
 //         str[i] = str[i][0].toUpperCase() + str[i].slice(1,str[i].length);
@@ -938,4 +919,459 @@
 // console.log("the-trtr-tr-tr".replace(/\p{P}/gu," "));
 
 
+// function firstNonRepeatingLetter(s) {
+//     let og = s;
+//     s = s.toLowerCase();
+//   // Add your code here
+//   let map = new Map();
+//   for(let i = 0; i < s.length; i++){
+//     if(map.has(s[i].toLowerCase())){
+//         map.set(s[i],map.get(s[i])+1);
+//     }else{
+//         map.set(s[i],1);
+//     }
+//   }
+// //   console.log(map);
+//   let found = "";
+//   for(const [ key ,value ] of map){
+//     if( value === 1 ){
+//         found = key;
+//         break;
+//     }
+//   }
+// //   console.log(og.includes(found));
 
+//   if(found){
+//     if(og.split("").includes(found)){
+//         return found;
+//     }else{
+//         return found.toUpperCase();
+//     }
+//   }else{
+//     return "";
+//   }
+// }
+// console.log(firstNonRepeatingLetter('sTreSS')); //t
+
+
+// function smallest(n) {
+//     let numArr = n.toString().split("");
+//     console.log(numArr);
+
+// }
+// console.log(smallest(285365), [238565, 3, 1]);
+// function moveZeros(arr) {
+//     let totalZeroes = 0;
+//   for(let i = arr.length -1; i >= 0; i--){
+//     if(arr[i] === 0){
+//         arr.splice(i,1);
+//         totalZeroes++;
+//     }
+//   }
+//   while(totalZeroes >= 0){
+//     arr.push(0);
+//     totalZeroes--;
+//   }
+//   return arr;
+// }
+
+// console.log(moveZeros([ 9, +0, 9, 1, 2, 1, 1, 3, 1, 9, +0, +0, 9, +0, +0, +0, +0, +0, +0, +0 ]));
+
+// const email = 'chetankshirsagar87@gmail.com';
+// const maskEmail = email => {
+//   const indexOfAt = email.indexOf("@");
+//   for(let i = 1; i < indexOfAt; i++){
+//     email = email.replace(email.at(i),"*");
+//   }
+//   return email;
+// }
+// console.log(maskEmail(email));
+// function digitSum(n) {
+//   let sum = 0;
+//   while (n > 0) {
+//     let ld = n % 10;
+//     sum += ld;
+//     n = Math.floor(n / 10);
+//   }
+//   return sum;
+// }
+
+// function digitalRoot(n) {
+
+//   while (n > 9) {
+//     n = digitSum(n);
+//   }
+//   return n;
+// }
+// console.log(digitalRoot(456), 6);
+
+
+// function countFeelings(string, array) {
+//   //good luck
+//   let c = 0;
+//   for (let feeling of array) {
+//     let isMatched = true;
+//     for (let i = 0; i < feeling.length; i++) {
+//       if (!string.includes(feeling.at(i))) {
+//         isMatched = false;
+//         break;
+//       }
+//     }
+//     if(isMatched) c++;
+//   }
+//   return c;
+// }
+// console.log(countFeelings('yliausoenvjw', ['anger', 'awe', 'joy', 'love', 'grief']));
+
+
+// function nthSmallest(arrays, n) {
+//     // return arrays;
+//     let comb = arrays[0];
+//     for(let i = 1; i < arrays.length; i++){
+//       // comb = comb.concat(arrays[i]);
+//       let arr = arrays[i];
+//       for(let j = 0; j < arr.length; j++){
+//         comb.push(arr[j]);
+//       }
+//     }
+
+//     for(let i = 0; i < comb.length - 1; i++){
+//       for(let j = 0; j < comb.length - i; j++){
+//           if(comb[j] > comb[j+1]){
+//             let temp = comb[j];
+//             comb[j] = comb[j+1];
+//             comb[j+1] = temp;
+//           }
+//       }
+//     }
+
+//     return comb[n-1];
+//     // .sort((a, b) => a - b)[n-1]
+// }
+// console.log(nthSmallest([[2, 8, 12], [4, 6, 10]], 5));
+
+
+// function incrementString (strng) {
+//   if(!(/[0-9]/u.test(strng.at(-1)))){
+//     return strng+"1";
+//   }
+//   let idx = -1;
+//   for(let i = strng.length- 1; i >= 0; i--){
+//     if(/[a-z]/u.test(strng.at(i))){
+//       idx = i;
+//       break;
+//     }
+//   }
+//   // console.log(idx);
+
+//   let digitStr = strng.slice(idx+1);
+//   const len = digitStr.length;
+//   digitStr = (parseInt(digitStr) + 1).toString().padStart(len,"0");
+//   // console.log(digitStr);
+//   return idx === -1 ? strng+"1" : strng.slice(0,idx+1) + digitStr;
+
+// }
+
+// console.log(incrementString("fo99obar99"));//"foobar1000"
+
+
+
+// function productFib(prod){
+//   let first = 0;
+//   let second = 1;
+//   let prev = first + second;//1
+//   let current = 0;
+//   while( (current * prev) !== prod && (current * prev) < prod){
+//    current = second + prev;
+//   //  console.log(current);
+//    second = prev;
+//    prev = current;
+//   }
+//   return (second * prev) === prod ? [second, prev, true] : [prev, second+prev, false];
+// }
+// console.log(productFib(5895), [89, 144, false]);
+// console.log(55*89, 89*144);
+
+
+// function alphanumeric(string){
+//   string = string.trim();
+//   if(string.length > 0){
+//       const imposter = string.match(/[\p{P}\s+]/gu);
+//       // console.log(imposter);
+//       // /\p{P}/gu
+//       if(imposter) return false;
+//   }else{
+//     return false;
+//   }
+//   // if(imposter) return false;
+//   return true;
+// }
+// console.log(alphanumeric("PassW0rd"), false);
+
+
+// function toUnderscore(string) {
+
+// }
+// console.log(toUnderscore('ThisIsBeautifulDay'), 'this_is_beautiful_day')
+
+
+// function scramble(str1, str2) {
+//   if(str1.length <  str2.length) return false;
+//   let t = true;
+//   let map1 = new Map();
+//   let map2 = new Map();
+//   for(let i = 0; i < str1.length; i++){
+//     if(map1.has(str1.at(i))){
+//       map1.set(str1.at(i),map1.get(str1.at(i))+1);
+//     }else{
+//       map1.set(str1.at(i), 1);
+//     }
+//   }
+//   for(let i = 0; i < str2.length; i++){
+//     if(map2.has(str2.at(i))){
+//       map2.set(str2.at(i),map2.get(str2.at(i))+1);
+//     }else{
+//       map2.set(str2.at(i), 1);
+//     }
+//   }
+//   for(let i = 0; i < str2.length; i++){
+//     if(!map2.has(str2.at(i))) return false;
+//     let c1 = map1.get(str2.at(i)); 
+//     let c2 = map2.get(str2.at(i));
+//     if( !(c1 >= c2) ) return false;
+//   }
+//   return true;
+// }
+
+// console.log(scramble('cedewaraaossoqqyt', 'codewars'   ));
+
+// function solution(numbers) {
+//   const min = Math.min(...numbers);
+//   let gcd = 1;
+//   for(let i = 2; i <= min; i++){
+//     let isCommonDivisor = true;
+//     for(let j = 0; j < numbers.length; j++){
+//       if( numbers[j] % i !== 0 ){
+//         // console.log(i , j);
+//         isCommonDivisor = false;
+//         break;
+//       }
+//     }
+//     if(isCommonDivisor){
+//        gcd = i;
+//       // console.log( gcd);
+//     }
+//   }
+//   return gcd * numbers.length;
+// }
+// console.log(solution([6, 9, 21])); //9
+
+
+// function sumPairs(ints, s) {
+//   let hasPair = false;
+//   let map = new Map();
+//   for (let i = 0; i < ints.length; i++) {
+//     for (let j = i + 1; j < ints.length; j++) {
+//       if (ints[i] + ints[j] === s) {
+//         map.set(ints[j], j);
+//         hasPair = true;
+//       }
+//     }
+//   }
+//   let low = Infinity;
+//   let bestKey;
+//   for (const [key, value] of map.entries()) {
+//     if (value < low) {
+//       low = value;
+//       bestKey = key;
+//     }
+//   }
+//   if (hasPair) {
+//     return [s - bestKey, bestKey];
+//   } else {
+//     return undefined;
+//   }
+// }
+
+// console.log(sumPairs([0, 2, 0], 0));
+
+// function sumPairs(ints, s) {
+//   const set = new Set();
+//   for (const x of ints) {
+//     if (set.has(s - x)) {
+//       return [s - x, x];
+//     }
+//     set.add(x);
+//   }
+//   return undefined;
+// }
+
+
+// function encode(string) {
+//   const vowels = ["a", "e", "i", "o", "u"];
+//   const map = new Map();
+//   map.set("a",1);
+//   map.set("e",2);
+//   map.set("i",3);
+//   map.set("o",4);
+//   map.set("u",5);
+//   for(let i = 0; i < string.length; i++){
+//     if(vowels.includes(string.at(i))){
+//       string = string.replaceAll(string.at(i),map.get(string.at(i)));
+//     }
+//   }
+//   return string;
+// }
+
+// function decode(string) {
+//   let n = ["1", "2", "3", "4", "5"];
+//   const map = new Map();
+//   map.set("1","a");
+//   map.set("2","e");
+//   map.set("3","i");
+//   map.set("4","o");
+//   map.set("5","u");
+//   for(let i = 0; i < string.length; i++){
+//     if(n.includes(string.at(i))){
+//       string = string.replaceAll(string.at(i),map.get(string.at(i)));
+//     }
+//   }
+//   return string;
+// }
+
+// console.log(encode('How are you today?'), 'H4w 1r2 y45 t4d1y?');
+// console.log(decode('h2ll4'), 'hello');
+
+// function isValidIP(str) {
+//  const numbers = str.split(".");
+//  if(!(numbers.length === 4)) return false;
+//  console.log(numbers);
+
+//  for(let num of numbers){
+//     //false for leading zeroes
+
+//     if(num.length === 0) return false;
+//     if(num.length > 1 && num.startsWith("0")){
+//       return false;
+//     }
+//     let t = num.match(/[^0-9]/gu);
+//     if(t) return false;
+
+//     num = parseInt(num);
+
+//     console.log(num);
+
+//     if( !(num>=0 && num<=255) ) return false;
+//  }
+//  return true;
+// }
+// console.log(isValidIP('\n1.2.3.4'), false);
+
+//     assert.strictEqual(isValidIP('1e0.1e1.1e2.2e2'), false);
+//     assert.strictEqual(isValidIP(' 1.2.3.4'       ), false);
+//     assert.strictEqual(isValidIP('1.2.3.4 '       ), false);
+//     assert.strictEqual(isValidIP('12.34.56.-7'    ), false);
+//     assert.strictEqual(isValidIP('1.2.3.4\n'      ), false);
+//     assert.strictEqual(isValidIP('\n1.2.3.4'      ), false);
+
+
+// function pigIt(str){
+//   return str.match(/[a-zA-z]*/gu);
+// }
+// console.log(pigIt('Pig ! ! latin is cool !'),'igPay atinlay siay oolcay');
+
+
+// function towerBuilder(nFloors) {
+//   // build here
+//   const tower = [];
+//   let i = 1;
+//   for(let n = nFloors - 1; n >= 0; n--){
+//     let oneFloor = "";
+//     for(let firstSpaces = n; firstSpaces >= 1; firstSpaces--){
+//       oneFloor += " ";
+//     }
+//     for(let starts = i; starts >= 1; starts--){
+//       oneFloor += "*";
+//     }
+//     for(let secondSpaces = n; secondSpaces >= 1; secondSpaces--){
+//       oneFloor += " ";
+//     }
+//     tower.push(oneFloor);
+//     // console.log(oneFloor);
+
+//     i += 2;
+//   }
+//   return tower;
+// }
+// console.log(towerBuilder(3));/
+
+//["  *  "," *** ","*****"]
+
+
+// https://www.codewars.com/kata/58f5c63f1e26ecda7e000029
+
+// function wave(str){
+//   let wave = [];
+//   str = str.split("");
+//   // console.log(str);
+
+//   for(let i = 0; i < str.length; i++){
+//     if(!(str[i] === " ")){
+//       let temp = str.slice();
+//       temp[i] = temp[i].toUpperCase();
+//       // console.log(temp.join(""));
+//       wave.push(temp.join(""));
+//     }
+//   }
+
+//   return wave;
+// }
+// "hello" => ["Hello", "hEllo", "heLlo", "helLo", "hellO"]
+// " s p a c e s " => [ " S p a c e s ", " s P a c e s ", " s p A c e s ", " s p a C e s ", " s p a c E s ", " s p a c e S "]
+// console.log(wave(" s p a c e s "));
+
+//https://www.codewars.com/kata/5420fc9bb5b2c7fd57000004
+//https://www.codewars.com/kata/534d2f5b5371ecf8d2000a08
+
+
+
+// function highestRank(arr) {
+//   let frequencyMap = new Map();
+//   for (let index = 0; index < arr.length; index++) {
+//     if (frequencyMap.has(arr[index])) {
+//       frequencyMap.set(arr[index], frequencyMap.get(arr[index]) + 1);
+//     } else {
+//       frequencyMap.set(arr[index], 1);
+//     }
+//   }
+//   //  return frequencyMap;
+//   let mostFrequent = 0;
+//   let largerMostFrequent = -Infinity;
+//   for(const [key, value] of frequencyMap){
+//     if(value > mostFrequent){
+//       mostFrequent = value;
+//       largerMostFrequent = key;
+//     }else if(value === mostFrequent){
+//       largerMostFrequent = Math.max(largerMostFrequent, key);
+//     }
+//   }
+//  return largerMostFrequent;
+// }
+// console.log(highestRank([12, 10, 8, 12, 7, 6, 4, 10, 12, 10]));
+
+
+
+// function multiplicationTable(size) {
+//   const multiplicationTableLol = [];
+//   for(let number = 1; number <= size; number++){
+//     const shiii = [];
+//     for(let element = 1; element <= size; element++){
+//       shiii.push(number * element);
+//     }
+//     multiplicationTableLol.push(shiii);
+//   }
+//   return multiplicationTableLol;
+// }
+
+// console.log(multiplicationTable(3));
+// console.log("Chetan Kshirsagar");

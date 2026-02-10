@@ -4,3 +4,17 @@ new keyword
 
 
 https://www.codewars.com/kata/5977ef1f945d45158d00011f
+https://www.codewars.com/kata/541c8630095125aba6000c00
+
+5kyu
+https://www.codewars.com/kata/54a91a4883a7de5d7800009c  DONE
+https://www.codewars.com/kata/529b418d533b76924600085d/train/javascript
+https://www.codewars.com/kata/5279f6fe5ab7f447890006a7
+https://www.codewars.com/kata/54521e9ec8e60bc4de000d6c
+
+6kyu
+https://www.codewars.com/collections/easy-6-kyus
+
+invested
+https://www.codewars.com/kata/56f2d43fe40b70a442000f26/train/javascript
+https://stackoverflow.com/questions/52729636/one-line-task-check-range-codewars-using-javascripts-methods
