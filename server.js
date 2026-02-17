@@ -757,27 +757,134 @@ const ranges = [
     max: 80
   }
 ]
-```
-const avgCal = (ranges) => {
-  let minAll = 0;
-  for (const obj of ranges) {
-    minAll += obj.min;
+// ```
+// const avgCal = (ranges) => {
+//   let minAll = 0;
+//   for (const obj of ranges) {
+//     minAll += obj.min;
+//   }
+//   const minAverage = minAll / ranges.length;
+
+//   let maxAll = 0;
+//   for (const obj of ranges) {
+//     minAll += obj.max;
+//   }
+//   const maxAverage = maxAll / ranges.length;
+
+//   const avgAverage = (maxAverage + minAverage) / 2;
+
+//   return [minAverage, maxAverage, avgAverage];
+// }
+// ```
+
+
+const [minSum, maxSum] = ranges.reduce((acc, obj) => {
+  const min = obj.min;
+  const max = obj.max;
+  // console.log(acc);
+
+  acc[0] += min;
+  acc[1] += max;
+  return acc;
+}, [0, 0]);
+
+// console.log(minSum, maxSum);
+
+
+var maxSubArray = function (nums) {
+
+  const areNegatives = nums.every((ele) => ele < 0);
+  let maxSum = nums[0];
+  let currSum = nums[0];
+  let idx = [];
+  for (let i = 1; i < nums.length; i++) {
+    currSum = Math.max(currSum + nums[i], nums[i]);
+    // maxSum = Math.max(currSum, maxSum);
+    // if(currSum > max)
   }
-  const minAverage = minAll / ranges.length;
+  return maxSum;
 
-  let maxAll = 0;
-  for (const obj of ranges) {
-    minAll += obj.max;
+};
+// console.log(maxSubArray([-2, -3, 4, -1, -2, 1, 5, -3]));
+
+
+
+
+
+let one = () => console.log("one");
+
+const two = () => console.log("two");
+
+const three = () => console.log("three");
+
+// const formater = fn => {
+//   console.log(`calling ${fn.name}`)
+//   fn();
+//   console.log(`${fn.name} ends`)
+// }
+
+// formater(one);
+const logger = callback => {
+  return () => {
+    return (num) => {
+      console.log("*".repeat(num));
+      callback();
+      console.log("*".repeat(num));
+    }
   }
-  const maxAverage = maxAll / ranges.length;
-
-  const avgAverage = (maxAverage + minAverage) / 2;
-
-  return [minAverage, maxAverage, avgAverage];
 }
-```
+one = logger(one);
+one()(4);
 
 
-const average = ranges.reduce((acc, obj) => {
-    
-})
+
+
+
+
+
+
+
+
+
+
+
+
+function add(n1, n2) {
+  return n1 + n2;
+}
+function subtract(n1, n2) {
+  return n1 - n2;
+}
+
+const decorator = (callback) => {
+  return (n1, n2) => {
+    console.log(`Operating on ${n1} & ${n2}`);
+    const result = callback(n1, n2);
+    console.log(`Result is ${result}`);
+  }
+}
+
+add = decorator(add);
+// add(2, 3);
+
+
+
+
+
+
+
+const multiply = a => {
+  return b => {
+    return c => {
+      return a * b * c;
+    }
+  }
+}
+
+// console.log(multiply(2)(3)(4));
+
+
+
+
+
+

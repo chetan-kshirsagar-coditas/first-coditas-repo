@@ -32,13 +32,10 @@ for (const name in person) {
 const firstCopy = { a: 1, b: 2, c : {digit : 3} };
 const secondCopy = {} 
 Object.assign(secondCopy , firstCopy);
-firstCopy.name = "chetan";
-
-// firstCopy.c = {}
-
-firstCopy.c.digit = 4;
-// console.log(firstCopy);
-// console.log(secondCopy);
+console.log(secondCopy);
+firstCopy.c.digit = 9;
+console.log(firstCopy);
+console.log(secondCopy);
 
 
 
