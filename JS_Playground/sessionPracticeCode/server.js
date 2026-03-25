@@ -601,57 +601,7 @@
 // 11 14 13 6
 //  4  9  8 1`);
 
-const filler = (matrix, size) => {
-  for (let index = 0; index < size; index++) {
-    let temp = [];
-    for (let jindex = 0; jindex < size; jindex++) {
-      temp[jindex] = 0;
-    }
-    matrix.push(temp);
-  }
-}
-const spiralWithCorners = number => {
-  const matrix = [];
-  filler(matrix, number);
-  // console.log(matrix);
 
-  let row = 0;
-  let rBound = number;
-  let col = 0;
-  let cBound = number;
-  let element = 1;
-
-  while (element <= (number * number)) {
-    //top - done
-    for (let k = 0; k < cBound; k++) {
-      matrix[row][k] = element++;
-    }
-    row++;
-
-    //right - done
-    for (let k = row; k < rBound; k++) {
-      matrix[k][cBound - 1] = element++;
-    }
-    cBound--;
-
-    //bottom
-    for (let k = cBound - 1; k >= col; k--) {
-      matrix[rBound - 1][k] = element++;
-    }
-    rBound--;
-
-    //left
-    for (let k = rBound - 1; k >= row; k--) {
-      matrix[k][col] = element++;
-    }
-    col++;
-  }
-
-
-
-  console.log(matrix);
-
-}
 
 // spiralWithCorners(4);
 
@@ -834,7 +784,7 @@ const logger = callback => {
   }
 }
 one = logger(one);
-one()(4);
+// one()(4);
 
 
 
@@ -864,7 +814,7 @@ const decorator = (callback) => {
   }
 }
 
-add = decorator(add);
+// add = decorator(add);
 // add(2, 3);
 
 
@@ -881,10 +831,36 @@ const multiply = a => {
   }
 }
 
-// console.log(multiply(2)(3)(4));
+// console.log(multiply(2)(3)(4)
 
+// for(var i = 0; i < 5; i++){
+//   setTimeout(()=>{
+//     console.log(i)
+//   },)
+// }
+// console.log("hi")
+let months = Math.floor(230/22);
+let remDays = 230 % 22;
+let oneM = 22 * 8 * 89;
+let totalDis = 0;
+let total = 0;
 
+for(let m = 1; m <= months; m++ ){
+  totalDis += (oneM * 0.42);
+}
 
+total = (remDays * 89 * 8) + totalDis + (months * 22 * 8 * 89);
+console.log(total);
 
-
-
+function priceWithMonthlyDiscount(ratePerHour, numDays, discount) {
+  const dayRate = ratePerHour * 8;
+  const monthRate = dayRate * 22;
+  
+  const fullMonths = Math.floor(numDays / 22);
+  const remainingDays = numDays % 22;
+  
+  const discountedMonthPrice = monthRate * (1 - discount);
+  const totalCost = (fullMonths * discountedMonthPrice) + (remainingDays * dayRate);
+  
+  return Math.ceil(totalCost);
+}

@@ -1374,4 +1374,1046 @@
 // }
 
 // console.log(multiplicationTable(3));
-// console.log("Chetan Kshirsagar");
+// // console.log("Chetan Kshirsagar");
+// const rule = {
+//     ')':'(',
+//     '}':'{',
+//     ']':'['
+//   }
+// const isPaired = (string) => {
+//   const stack = [];
+
+//   for(const ele of string){
+//     if(/[\[{(]/.test(ele)) stack.push(ele);
+//     if(/[\]})]/.test(ele)){
+//         // console.log(rule[']'])
+//         // console.log("rule : "+[stack[stack.length - 1]]+" ele : "+ele)
+//         if(stack.length === 0) return false;
+//         if(stack[stack.length - 1] === rule[ele]) {
+//             stack.pop()
+//         }else{
+//             return false;
+//         };
+//     }
+//   }
+// //   console.log(stack);
+//   return stack.length === 0 ? true : false;
+// };
+
+// console.log(isPaired("{[)][]}"));
+
+
+
+
+
+// const isIsogram = (s) => {
+//     s = s.toLowerCase();
+//     const set = [];
+//     for (const element of s) {
+//         if(element === '-'){
+//             set.push(element);
+//         }else if(element !== '-' && !set.includes(element)){
+//             set.push(element);
+//         } 
+//     }
+//     // console.log(set);
+//   return s.length === set.length;
+// };
+
+// console.log(isIsogram("six-year-old"));
+
+
+// const countWords = (subtitle) => {
+// //  let map = new Map();
+//  const words = subtitle.toLowerCase().match(/(?!'.*')\b[\w']+\b/g);
+//  console.log(words)
+//  const frequencyMap = words.reduce((acc, e) => {
+//   if(Object.hasOwn(acc, e)){
+//     acc[e] = acc[e] + 1;
+//   }else{
+//     acc[e] = 1;
+//   }
+//   return acc;
+//  },{});
+
+// //  return frequencyMap;
+// };
+
+// // console.log(countWords(`"That's the password: 'PASSWORD 123'!", cried the Special Agent.\nSo I fled.`));
+// // console.log(countWords('word'));
+// const rawMaterial = {
+//   'Margherita': 7,
+//   'Caprese': 9,
+//   'Formaggio': 10,
+//   'ExtraSauce': 1,
+//   'ExtraToppings': 2
+// };
+// console.log(rawMaterial[[]]);
+// function pizzaPrice(pizza, ...extras) {
+//   let total = rawMaterial[pizza] ?? 0;
+// //   console.log(total);
+//   if(extras){
+//       const t = extras.reduce((ac, ex)=> {
+//         // console.log(ex);
+//         return ac + rawMaterial[ex];
+//       },0);
+//     total = total + t;
+//     // console.log(t);
+//   }
+//   return total;
+// }
+// // console.log(pizzaPrice('Margherita', 'ExtraSauce'));
+// // console.log(pizzaPrice([]));
+// function orderPrice(pizzaOrders) {
+//   if(pizzaOrders.length === 0) return 0;
+// //   console.log(pizzaOrders);
+//   let total = 0;
+//   for (let order of pizzaOrders){
+//     total = pizzaPrice(order["pizza"],...order["extras"]);
+//     console.log(JSON.stringify(order)+" "+total);
+//   } 
+//   return total;
+// }
+
+// // console.log(orderPrice([
+// //   {
+// //     "pizza": "Margherita",
+// //     "extras": []
+// //   },
+// //   {
+// //     "pizza": "Caprese",
+// //     "extras": [
+// //       "ExtraToppings"
+// //     ]
+// //   }
+// // ]))
+
+
+
+// const transpose = (input) => {
+//   // throw new Error('Remove this line and implement the function');
+
+//   const temp = input.slice();
+//   input.sort((a, b) => a.length - b.length);
+//   // console.log("input :"+input);
+//   // temp.reverse();
+//   // console.log(temp);
+//   if (!(JSON.stringify(temp) === JSON.stringify(input))) {
+//     console.log("glti hoagay malik")
+//     input.reverse();
+//   }
+//   const n = input[0] ? input[0].length : 0;
+//   // console.log(n);
+//   const transposeMatrix = Array(n).fill("");
+//   input.forEach((element, i) => {
+
+//     for (let index = 0; index < element.length; index++) {
+//       transposeMatrix[index] += element[index];
+//     }
+
+//   });
+
+//   console.log(transposeMatrix);
+// };
+
+// // transpose(['A', 'I']); 
+
+
+
+// const encode = (string) => {
+//   if (!string) return "";
+//   let encodedString = "";
+//   let i = 0;
+
+//   while (i < string.length) {
+//     let char = string[i];
+//     let count = 0;
+
+//     while (i < string.length && string[i] === char) {
+//       count++;
+//       i++;
+//     }
+
+//     encodedString += (count > 1 ? count : "") + char;
+//   }
+
+//   console.log(encodedString);
+//   return encodedString;
+// };
+
+// // Result: "12WB12W3B24WB"
+// // encode("WWWWWWWWWWWWBWWWWWWWWWWWWBBBWWWWWWWWWWWWWWWWWWWWWWWWB");
+
+
+// function decodeRLE(encodedString) {
+//   if (!encodedString) return "";
+
+//   let decodedString = "";
+//   let i = 0;
+
+//   while (i < encodedString.length) {
+//     let countStr = "";
+//     let char = "";
+
+//     // Read all consecutive digits to form the count string
+//     while (i < encodedString.length && isDigit(encodedString[i])) {
+//       countStr += encodedString[i];
+//       i++;
+//     }
+
+//     // The next character is the actual character to repeat
+//     char = encodedString[i];
+//     i++;
+
+//     // Determine the repeat count. If no digits were found, the count is 1.
+//     let count = countStr.length > 0 ? parseInt(countStr, 10) : 1;
+
+//     // Append the character 'count' times to the result
+//     for (let j = 0; j < count; j++) {
+//       decodedString += char;
+//     }
+//   }
+
+//   // Helper function to check if a character is a digit
+//   function isDigit(char) {
+//     return /\d/.test(char);
+//   }
+
+//   return decodedString;
+// }
+
+// // Example Usage:
+// // Assuming an input like "3w2g1o2p" for "wwwggopp"
+// // Or "12WB12W3B24WB" for a more complex string
+// // const encoded1 = "3w2g1o2p";
+// // const decoded1 = decodeRLE(encoded1);
+// // console.log(`Decoded "${encoded1}": ${decoded1}`); // Output: wwwggopp
+
+// // const encoded2 = "WWWWWWWWWWWWBWWWWWWWWWWWWBBBWWWWWWWWWWWWWWWWWWWWWWWWB";
+// // const decoded2 = decodeRLE(encoded2);
+// // console.log(`Decoded (example from source): ${decoded2}`); 
+
+
+// const isArmstrongNumber = (n) => {
+//   const s = BigInt(n).toString();
+//   const digits = BigInt(s.length);
+//   let sum = BigInt(0);
+
+//   for (const ch of s) {
+//     const digit = BigInt(Number(ch));
+//     sum += digit ** digits;
+//   }
+
+//   return sum === BigInt(n);
+// };
+
+// // console.log(isArmstrongNumber(186709961001538790100634132976990n))
+
+// const hey = (message) => {
+//   // throw new Error('Remove this line and implement the function');
+//   message = message.trim();
+//   const isQuestion = message.endsWith("?");
+//   const isAllCaps = message.toUpperCase() === message;
+//   if (isQuestion) {
+//     if (isAllCaps) {
+//       return "Calm down, I know what I'm doing!";
+//     }
+//     return "Sure.";
+//   } else {
+//     if (message.length === 0) {
+//       return "Fine. Be that way!";
+//     }
+//     if (isAllCaps) {
+//       return "Whoa, chill out!";
+//     }
+//     return "Whatever.";
+//   }
+
+// };
+
+// // console.log(hey("   "))
+// const numToRoman = new Map([
+//   [1000, "M"],
+//   [500, "D"],
+//   [100, "C"],
+//   [50, "L"],
+//   [10, "X"],
+//   [5, "V"],
+//   [1, "I"]
+// ]);
+// const toRoman = (value) => {
+//   // throw new Error('Remove this line and implement the function');
+//   let roman = "";
+//   value = value.toString();
+//   for (const [thresh, symbol] of numToRoman.entries()) {
+//     while (value >= thresh) {
+//       // console.log(thresh);
+//       roman += symbol;
+//       value -= thresh;
+//     }
+//   }
+//   return roman;
+
+// };
+
+// // console.log(toRoman(4));
+
+// const eggCount = (displayValue) => {
+//   // throw new Error('Remove this line and implement the function');
+//   console.log(displayValue.toString(2))
+//   const binary = displayValue.toString(2);
+//   // return binary.match(/[1]/gu)? .length;
+// };
+
+// // console.log(eggCount(0));
+
+
+
+
+
+
+// const cost = (books) => {
+//   const frequencyMap = books.
+//     reduce((freqObj, element) => {
+//       if (freqObj.hasOwnProperty(element)) {
+//         freqObj[element] += 1;
+//       } else {
+//         freqObj[element] = 1;
+//       }
+//       return freqObj;
+//     }, {})
+
+
+//   const noOfBooks = [];
+//   for (const bookNo in frequencyMap) {
+//     noOfBooks.push(frequencyMap[bookNo]);
+//   }
+//   const groupsOfBooks = [];
+//   const n = Math.max(...noOfBooks);
+//   for (let i = 0; i < n; i++) {
+//     const singleGroup = [];
+//     for (let j = 0; j < noOfBooks.length; j++) {
+//       if (noOfBooks[j] > 0) {
+//         singleGroup.push(1);
+//         noOfBooks[j] -= 1;
+//       }
+//     }
+//     groupsOfBooks.push(singleGroup);
+//   }
+
+//   // console.log(groupsOfBooks);
+
+//   let total = 0;
+//   let groupOfThree = 0;
+//   let groupOfFive = 0;
+//   for (const group of groupsOfBooks) {
+//     const noOfUniqueBooks = group.length;
+//     // console.log(noOfUniqueBooks);
+//     let groupPrice = 0;
+//     if (noOfUniqueBooks > 1) {
+//       if (noOfUniqueBooks === 2) {
+//         groupPrice = 2 * 800 * 0.95;
+//       } else if (noOfUniqueBooks === 3) {
+//         // groupPrice = 3 * 800 * 0.9;
+//         groupOfThree++;
+
+//       } else if (noOfUniqueBooks === 4) {
+//         groupPrice = 4 * 800 * 0.8;
+
+//       } else if (noOfUniqueBooks === 5) {
+//         // groupPrice = 5 * 800 * 0.75;
+//         groupOfFive++;
+//       }
+//     } else {
+//       // console.log("nhi")
+//       groupPrice = 800;
+//     }
+
+//     total += groupPrice;
+//   }
+
+//   let specialGrpPrice = 0;
+//   if (groupOfThree > 0 && groupOfFive > 0) {
+//     let min = 0;
+//     if (groupOfFive > groupOfThree) {
+//       min = groupOfThree;
+//       groupOfFive = groupOfFive - min;
+//       specialGrpPrice = groupOfFive * 5 * 800 * 0.75;
+//     } else {
+//       min = groupOfFive;
+//       console.log(min)
+//       groupOfThree -= min;
+//       specialGrpPrice = groupOfThree * 3 * 800 * 0.9;
+//     }
+//     specialGrpPrice += (min * (2 * 4 * 800 * 0.8));
+//     // console.log("splPrice : ", specialGrpPrice)
+//   } else {
+//     if (groupOfThree > 0) {
+//       specialGrpPrice = groupOfThree * 3 * 800 * 0.9;
+//     }
+//     if (groupOfFive > 0) {
+//       specialGrpPrice = groupOfFive * 5 * 800 * 0.75;
+//     }
+//   }
+//   console.log("totla Price: ", total, "spl Price: ", specialGrpPrice)
+//   return total + specialGrpPrice;
+// };
+
+// // console.log(cost([1, 1, 2, 2, 3, 3, 4, 4, 5, 5]));
+
+// const say = (n) => {
+//   if (n === 0) return "zero";
+
+//   const ones = ['', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten',
+//     'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen'];
+//   const tens = ['', '', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety'];
+//   const scales = ['', 'thousand', 'million', 'billion'];
+
+//   const convertChunk = (num) => {
+//     if (num === 0) return '';
+//     if (num < 20) return ones[num] + ' ';
+//     if (num < 100) return tens[Math.floor(num / 10)] + (num % 10 ? '-' + ones[num % 10] : '');
+//     if (num < 1000) return ones[Math.floor(num / 100)] + ' hundred ' + convertChunk(num % 100);
+//   };
+
+//   let result = '';
+//   let chunkIndex = 0;
+
+//   while (n > 0) {
+//     const chunk = n % 1000;
+//     if (chunk !== 0) {
+//       result = convertChunk(chunk).trim() + (scales[chunkIndex] ? ' ' + scales[chunkIndex] : '') +
+//         (result ? ' ' + result : '');
+//     }
+//     n = Math.floor(n / 1000);
+//     chunkIndex++;
+//   }
+
+//   return result.trim();
+
+// }
+
+// // console.log(say(4004));
+
+// function largestNumber(str) {
+//   return Math.max(...(str.replaceAll(/[;:!,?]/gu, " ").split(" ").map(Number)));
+// }
+
+// // console.log(largestNumber("-402,-1032!-569:-947;-633?-800!-1012;-402,-723?-8102!-3011"));
+
+// function getMilestone(years) {
+
+//   if (1 === years) return "Paper";
+//   if (years > 1) return "Wood";
+//   if (years > 5) return "Tin";
+//   if (years > 10) return "Silver";
+//   if (years > 25) return "Ruby";
+//   if (years > 40) return "Gold";
+//   if (years > 50) return "Daimond";
+//   if (years > 60) return "Platinum";
+//   return "Newlyweds";
+
+// }
+
+// // console.log(getMilestone(10));
+
+// function getCapturedValue(pieces) {
+//   if (!pieces.includes("K")) return "Checkmate";
+
+
+
+//   const eachPieceCount = {
+//     "P": 8,
+//     "R": 2,
+//     "N": 2,
+//     "B": 2,
+//     "Q": 1,
+//   }
+//   const eachPieceValue = {
+//     "P": 1,
+//     "R": 5,
+//     "N": 3,
+//     "B": 3,
+//     "Q": 9,
+//     "K": 0
+//   }
+//   const boardPiecesFreqMap = {
+
+//   }
+
+//   pieces.forEach((piece) => {
+//     if (piece in boardPiecesFreqMap) {
+//       boardPiecesFreqMap[piece] += 1;
+//     } else {
+//       boardPiecesFreqMap[piece] = 1;
+//     }
+//   });
+//   // console.log(boardPiecesFreqMap);
+//   let total = 0;
+//   for (const p in eachPieceCount) {
+//     if (p in boardPiecesFreqMap) {
+//       const boardPeKitnePiecesHai = boardPiecesFreqMap[p];
+//       const capturedKitneHai = eachPieceCount[p] - boardPeKitnePiecesHai;
+//       total += (capturedKitneHai * eachPieceValue[p]);
+//     } else {
+//       total += eachPieceCount[p] * eachPieceValue[p];
+//     }
+//   }
+//   return total;
+
+// }
+// // console.log(getCapturedValue(["P", "P", "P", "P", "P", "R", "B", "K"]))
+
+// const sum = (arr, n) => {
+//   let all = new Set();
+//   for (const ele of arr) {
+//     for (let i = ele; i < n; i += ele) {
+//       all.add(i);
+//     }
+//   }
+
+//   return [...all].reduce((a, e) => a + e, 0);
+// };
+
+// // console.log(sum([43, 47], 10000));
+
+// class WordSearch {
+//   constructor(grid) {
+//     this.grid = grid;
+//     this.discoveredWords = {};
+//   }
+
+//   find(words) {
+//     for (let word of words) {
+//       this.discoveredWords[word] = undefined;
+//       for (let i = 0; i < this.grid.length; i++) {
+
+//         // console.log([...word].reverse().join(""));
+//         // console.log(this.grid[i].includes([...word].reverse().join()));
+//         if (this.grid[i].includes(word)) {
+//           this.discoveredWords[word] = {
+//             start: [i + 1, this.grid[i].indexOf(word) + 1],
+//             end: [i + 1, this.grid[i].indexOf(word) + word.length]
+//           }
+//         }
+//         if (this.grid[i].includes([...word].reverse().join(""))) {
+//           this.discoveredWords[word] = {
+//             start: [i + 1, this.grid[i].indexOf([...word].reverse().join("")) + word.length],
+//             end: [i + 1, this.grid[i].indexOf([...word].reverse().join("")) + 1]
+//           }
+//         }
+//       }
+//     }
+
+//     return this.discoveredWords;
+//   }
+// }
+
+// // const wordSearch = new WordSearch(['rixilelhrs']);
+
+// // console.log(wordSearch.find(['elixir']))
+
+
+// const convert = (arr, fromBase, toBase) => {
+//   //binary - decimal
+//   if (fromBase === 2 && toBase === 10) {
+//     return parseInt(arr.join(""), 2).toString().split("").map(Number);
+//   }
+
+//   //decimal - binary
+//   if (fromBase === 10 && toBase === 2) {
+//     return Number(arr.join("")).toString(2).split("").map(Number);
+//   }
+
+//   //ternary - hexadecimal
+//   const hexaMappings = {
+//     'a': 10,
+//     'b': 11,
+//     'c': 12,
+//     'd': 13,
+//     'e': 14,
+//     'f': 15,
+//     10: 'a',
+//     11: 'b',
+//     12: 'c',
+//     13: 'd',
+//     14: 'e',
+//     15: 'f',
+
+//   }
+//   if (fromBase === 3 && toBase === 16) {
+//     return parseInt(Number(arr.join("")), 3).toString(16).split("").map(e => {
+//       if (e in hexaMappings) return hexaMappings[e];
+//       return +e;
+//     });
+//   }
+
+//   //hexadecimal - ternary
+//   if (fromBase === 16 && toBase === 3) {
+//     arr = arr.map(e => {
+//       if (e >= 10) return hexaMappings[e];
+//       return e;
+//     });
+//     // console.log(arr);
+//     return parseInt(arr.join(""), 16).toString(3).split("").map(Number);
+//   }
+
+// };
+
+// // console.log(convert([3, 46, 60], 97, 73));
+// //[2, 10]
+
+
+
+// const flatten = (nestedArr) => {
+//   // let flattenedArr = [];
+//   // for (let element of nestedArr) {
+//   //   if(!element) continue;
+//   //   if(element instanceof Array){
+//   //     element = element.map( e => {
+//   //       if(!(e === null)) return e;
+//   //     } )
+//   //     flattenedArr = [ ...flattenedArr, ...element ];
+//   //     continue
+//   //   }
+
+//   //   flattenedArr.push(element);
+
+//   // }
+//   // return flattenedArr;
+
+//   console.log(JSON.stringify(nestedArr).match(/[-\d]+/gu)?.map(Number))
+//   return JSON.stringify(nestedArr).replaceAll(/[\[\],null]/gu, "").split("").map(Number);
+// };
+
+// // console.log(flatten([[]]));
+
+// class GradeSchool {
+//   constructor() {
+//     this.db = new Map();
+//     this.gradeAndStudents = {};
+//   }
+//   roster() {
+
+//     // for (const [key, value] of Array.from(this.db.entries())) {
+//     //   if (value in this.gradeAndStudents) {
+//     //     this.gradeAndStudents[value] = [...this.gradeAndStudents[value], key].sort();
+//     //   } else {
+//     //     this.gradeAndStudents[value] = [key];
+//     //   }
+//     // }
+
+//     let allStudents = [];
+//     for (const key in this.gradeAndStudents) {
+//       const element = this.gradeAndStudents[key];
+//       allStudents = [...allStudents, ...element];
+//     }
+//     return allStudents;
+//   }
+
+//   add(name, grade) {
+
+//     if (Array.from(this.db.keys()).includes(name)) {
+//       return false;
+//     }
+
+//     this.db.set(name, grade);
+//     if (grade in this.gradeAndStudents) {
+//       this.gradeAndStudents[grade] = [...this.gradeAndStudents[grade], name].sort();
+//     } else {
+//       this.gradeAndStudents[grade] = [name];
+//     }
+//     return true;
+//   }
+
+//   grade(grade) {
+
+//     // for (const [key, value] of Array.from(this.db.entries())) {
+//     //   if (value in this.gradeAndStudents) {
+//     //     this.gradeAndStudents[value] = [...this.gradeAndStudents[value], key].sort();
+//     //   } else {
+//     //     this.gradeAndStudents[value] = [key];
+//     //   }
+//     // }
+
+//     if (grade in this.gradeAndStudents) {
+//       return this.gradeAndStudents[grade];
+//     }
+//     return [];
+//   }
+// }
+
+// // let school = new GradeSchool();
+// // // console.log(school.roster());
+// // school.add('Blair', 2);
+// // school.add('James', 2);
+// // school.add('James', 2);
+// // school.add('Paul', 2);
+// // console.log(school.grade(2));
+// // school.add('Peter', 2);
+// // school.add('Zoe', 2);
+// // school.add('Alex', 2);
+
+
+// // ····A····
+// // ···B·B···
+// // ··C···C··
+// // ·D·····D·
+// // E·······E
+// // ·D·····D·
+// // ··C···C··
+// // ···B·B···
+// // ····A····
+
+
+
+
+
+// const numbersMatch = {
+//   'ones': 1,
+//   'twos': 2,
+//   'threes': 3,
+//   'fours': 4,
+//   'fives': 5,
+//   'sixes': 6
+// }
+// const score = (diceScore, category) => {
+//   if (category === 'yacht') {
+//     //rule
+//     for (let i = 0; i < diceScore.length - 1; i++) {
+//       if (diceScore[i] !== diceScore[i + 1]) return 0;
+//     }
+//     return 50;
+//   }
+
+//   if (numbersMatch[category] <= 6) {
+//     const number = numbersMatch[category];
+//     let count = 0;
+//     for (const num of diceScore) {
+//       if (num === number) count++;
+//     }
+//     return count * numbersMatch[category];
+//   }
+
+//   //full-house category
+//   // Full House	Total of the dice	Three of one number and two of another	3 3 3 5 5 scores 19
+//   if (category === 'full house') {
+//     const bothNumCounts = {};
+//     for (const num of diceScore) {
+//       bothNumCounts[num] = (bothNumCounts[num] || 0) + 1;
+//     }
+//     if (Object.values(bothNumCounts).includes(2) && Object.values(bothNumCounts).includes(3)) {
+//       console.log(Object.entries(bothNumCounts))
+//       return Object.entries(bothNumCounts).reduce((acc, entry) => acc + (parseInt(entry[0]) * entry[1]), 0)
+//     }
+//     return 0;
+//   }
+
+//   //four of kind
+//   // Four of a Kind	Total of the four dice	At least four dice showing the same face	4 4 4 4 6 scores 16
+//   if (category === "four of a kind") {
+//     const freqMap = {};
+//     for (const num of diceScore) {
+//       freqMap[num] = (freqMap[num] || 0) + 1;
+//     }
+//     // console.log(freqMap);
+//     let total = 0;
+//     if (Object.values(freqMap).includes(4) || Object.values(freqMap).includes(5)) {
+//       for (const [key, val] of Object.entries(freqMap)) {
+//         // console.log("key and val : "+key, val);
+//         total = (val >= 4) ? parseInt(key) * 4 : 0;
+//         // console.log(total)
+//       }
+//     }
+//     return total;
+//   }
+
+//   //Little Straight	30 points	1-2-3-4-5	1 2 3 4 5 scores 30
+//   // Big Straight	30 points	2-3-4-5-6	2 3 4 5 6 scores 30
+
+//   if (category === 'little straight') {
+//     const freqMap = {};
+//     for (const num of diceScore) {
+//       freqMap[num] = (freqMap[num] || 0) + 1;
+//     }
+//     if(Object.keys(freqMap).toString() === '1,2,3,4,5'){
+//       return 30;
+//     }
+//     return 0;
+
+//   }
+//   if (category === 'big straight') {
+//     const freqMap = {};
+//     for (const num of diceScore) {
+//       freqMap[num] = (freqMap[num] || 0) + 1;
+//     }
+//     if(Object.keys(freqMap).toString() === '2,3,4,5,6'){
+//       return 30;
+//     }
+//     return 0;
+
+//   }
+
+//   if(category === 'choice'){
+//     return diceScore.reduce((acc, e) => acc + e, 0);
+//   }
+
+// };
+
+
+// // console.log(score([3, 5, 4, 1, 2], 'little straight'));
+
+// //
+// // This is only a SKELETON file for the 'Rational Numbers' exercise. It's been provided as a
+// // convenience to get you started writing code faster.
+// //
+
+//  class Rational {
+//   constructor(num, den) {
+//     if (den === 0) throw new Error('Denominator cannot be zero');
+//     this.num = num;
+//     this.den = den;
+//     this.reduce();
+//   }
+
+//   add(other) {
+//     return new Rational(
+//       this.num * other.den + other.num * this.den,
+//       this.den * other.den
+//     );
+//   }
+
+//   sub(other) {
+//     return new Rational(
+//       this.num * other.den - other.num * this.den,
+//       this.den * other.den
+//     );
+//   }
+
+//   mul(other) {
+//     return new Rational(this.num * other.num, this.den * other.den);
+//   }
+
+//   div(other) {
+//     return new Rational(this.num * other.den, this.den * other.num);
+//   }
+
+//   abs() {
+//     return new Rational(Math.abs(this.num), Math.abs(this.den));
+//   }
+
+//   exprational(n) {
+//     return n >= 0 ? new Rational(this.num ** n, this.den ** n) : new Rational(this.den ** Math.abs(n), this.num ** Math.abs(n));
+//   }
+
+//   expreal(x) {
+//   const result = Math.pow(x, this.num / this.den);
+//   // Round to handle cases like 15.999999999999998 -> 16
+//   return Math.round(result * 1e10) / 1e10;
+// }
+
+
+//   reduce() {
+//     // const common = this.gcd(Math.abs(this.num), Math.abs(this.den));
+//     // this.num /= common;
+//     // this.den /= common;
+
+//     // if (this.den < 0) {
+//     //   this.num = -this.num;
+//     //   this.den = -this.den;
+//     // }
+//     // return this;
+//   }
+
+//   gcd(a, b) {
+//     // return b === 0 ? a : this.gcd(b, a % b);
+//   }
+// }
+
+// function findGCD(a, b) {
+//     if (a === 0)
+//         return b;
+//     console.log(b % a, a)
+//     return findGCD(b % a, a);
+// }
+
+// console.log(findGCD(20, 12));
+const header = "Team                           | MP |  W |  D |  L |  P";
+const tournamentTally = (input) => {
+  if (input.length == 0) return header;
+  const inputArray = input.split("\n");
+  let tourneyTeamDetails = {};
+  for (let match of inputArray) {
+    match = match.split(";");
+    if (match[2] === "win") {
+      if (tourneyTeamDetails[match[0]]) {
+        tourneyTeamDetails[match[0]].wins = (tourneyTeamDetails[match[0]]['wins'] || 0) + 1;
+        tourneyTeamDetails[match[0]].matchesPlayed = (tourneyTeamDetails[match[0]]['matchesPlayed'] || 0) + 1;
+      } else {
+        tourneyTeamDetails[match[0]] = {
+          matchesPlayed: 1, wins: 1, lose: 0, draw: 0
+        }
+      }
+      if (tourneyTeamDetails[match[1]]) {
+        tourneyTeamDetails[match[1]].lose = (tourneyTeamDetails[match[1]]['lose'] || 0) + 1;
+        tourneyTeamDetails[match[1]].matchesPlayed = (tourneyTeamDetails[match[1]]['matchesPlayed'] || 0) + 1;
+      } else {
+        tourneyTeamDetails[match[1]] = {
+          matchesPlayed: 1, wins: 0, lose: 1, draw: 0
+        }
+      }
+
+    } else if (match[2] === 'loss') {
+      if (tourneyTeamDetails[match[0]]) {
+        tourneyTeamDetails[match[0]].lose = (tourneyTeamDetails[match[0]]['lose'] || 0) + 1;
+        tourneyTeamDetails[match[0]].matchesPlayed = (tourneyTeamDetails[match[0]]['matchesPlayed'] || 0) + 1;
+
+      } else {
+        tourneyTeamDetails[match[0]] = {
+          matchesPlayed: 1, wins: 0, lose: 1, draw: 0
+        }
+      }
+      if (tourneyTeamDetails[match[1]]) {
+        tourneyTeamDetails[match[1]].wins = (tourneyTeamDetails[match[1]]['wins'] || 0) + 1;
+        tourneyTeamDetails[match[1]].matchesPlayed = (tourneyTeamDetails[match[1]]['matchesPlayed'] || 0) + 1;
+
+      } else {
+        tourneyTeamDetails[match[1]] = {
+          matchesPlayed: 1, wins: 1, lose: 0, draw: 0
+        }
+      }
+    } else {
+      if (tourneyTeamDetails[match[0]]) {
+        tourneyTeamDetails[match[0]].draw = (tourneyTeamDetails[match[0]]['draw'] || 0) + 1;
+        tourneyTeamDetails[match[0]].matchesPlayed = (tourneyTeamDetails[match[0]]['matchesPlayed'] || 0) + 1;
+
+      } else {
+        tourneyTeamDetails[match[0]] = {
+          matchesPlayed: 1, wins: 0, lose: 0, draw: 1
+        }
+      }
+      if (tourneyTeamDetails[match[1]]) {
+        tourneyTeamDetails[match[1]].draw = (tourneyTeamDetails[match[1]]['draw'] || 0) + 1;
+        tourneyTeamDetails[match[1]].matchesPlayed = (tourneyTeamDetails[match[1]]['matchesPlayed'] || 0) + 1;
+
+      } else {
+        tourneyTeamDetails[match[1]] = {
+          matchesPlayed: 1, wins: 0, lose: 0, draw: 1
+        }
+      }
+    }
+  }
+  // console.log((tourneyTeamDetails))
+  // console.log(Object.entries(tourneyTeamDetails).sort(([,a], [,b]) => b["wins"] - a["wins"]));
+  for (const team in tourneyTeamDetails) {
+    const points = (tourneyTeamDetails[team]['wins'] * 3) + tourneyTeamDetails[team]['draw'];
+    tourneyTeamDetails[team]['points'] = points;
+  }
+  console.log(tourneyTeamDetails)
+  tourneyTeamDetails = Object.fromEntries(
+    Object.entries(tourneyTeamDetails).sort(([, a], [, b]) => b["points"] - a["points"])
+  );
+
+  // console.log(tourneyTeamDetails);
+  let template = "";
+
+  for (const team in tourneyTeamDetails) {
+    const points = (tourneyTeamDetails[team]['wins'] * 3) + tourneyTeamDetails[team]['draw'];
+    let row = `${team.padEnd(31, " ")}|  ${tourneyTeamDetails[team]['matchesPlayed'].toString().padEnd(2, " ")}|  ${tourneyTeamDetails[team]['wins']} |  ${tourneyTeamDetails[team]['draw']} |  ${tourneyTeamDetails[team]['lose']} |  ${points}\n`;
+    template += row;
+  }
+  return header + "\n" + template.trim();
+};
+
+// console.log(tournamentTally('Courageous Californians;Devastating Donkeys;win\n' +
+//       'Allegoric Alaskans;Blithering Badgers;win\n' +
+//       'Devastating Donkeys;Allegoric Alaskans;loss\n' +
+//       'Courageous Californians;Blithering Badgers;win\n' +
+//       'Blithering Badgers;Devastating Donkeys;draw\n' +
+//       'Allegoric Alaskans;Courageous Californians;draw'));
+
+
+
+
+// const obj = { 
+//   three: { number: 3 }, 
+//   one: { number: 1 }, 
+//   five: { number: 5 }, 
+//   two: { number: 2 } 
+// };
+
+
+// const sortedObj = Object.fromEntries(
+//   Object.entries(obj).sort(([,a], [,b]) => a.number - b.number)
+// );
+
+// // console.log(sortedObj);
+
+// const stats = { 
+//   'Blithering Badgers': { matchesPlayed: 1, wins: 0, lose: 1, draw: 0 }, 
+//   'Allegorical Alaskans': { matchesPlayed: 1, wins: 1, lose: 0, draw: 0 } 
+// };
+
+// const sortedKeys = Object.entries(stats).sort((a, b) => {
+//   // return stats[b].wins - stats[a].wins;
+// });
+
+// // console.log(sortedKeys); 
+// // Output: ["Allegorical Alaskans", "Blithering Badgers"]
+
+
+
+
+const all = (promises) => {
+
+  if (!promises) {
+    return Promise.resolve()
+  };
+
+  const resolvedPromises = [];
+
+  return new Promise(async (resolve, reject) => {
+    
+     for (const promise of promises) {
+      if(!(promise instanceof Promise)){
+        console.log(promise);
+        resolvedPromises.push(promise);
+        continue;
+      }
+       await  promise
+       .then((res) => {
+        console.log(res);
+        resolvedPromises.push(res);
+       })
+       .catch((err) => reject(err))
+    }
+    resolve(resolvedPromises);
+
+    // for (const promise of promises) {
+    //     if(!promise instanceof Promise){
+    //       resolvedPromises.push(promise);
+    //       continue;
+    //     };
+    //     (async function () {
+    //       await promise
+    //         .then((res) => resolvedPromises.push(res))
+    //         .catch(err => {
+    //           reject(err);
+    //         });
+    //     })();
+    //   }
+    //   console.log("resolve promises: "+resolvedPromises);
+    //   resolve(resolvedPromises);
+    // });
+  })
+}
+
+
+// const promise1 = Promise.resolve(3);
+// const promise2 = 42;
+// const promise3 = new Promise((resolve, reject) => {
+//   setTimeout(resolve, 100, "foo");
+// });
+// //// Expected output: Array [3, 42, "foo"]
+// console.log(await all([promise1, promise2, promise3]).then(res => res));
+

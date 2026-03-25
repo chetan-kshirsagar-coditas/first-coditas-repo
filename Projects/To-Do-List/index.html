@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do-List</title>
+</head>
+
+<body>
+    <header>
+        <h3>
+            To-Do
+        </h3>
+    </header>
+    <main>
+        <form>
+            <input type="text" placeholder="Enter Task">
+            <button>Add</button>
+            <ul>
+
+            </ul>
+        </form>
+    </main>
+
+    <script>
+        const input = document.querySelector("input");
+        const button = document.querySelector("button");
+        const ul = document.querySelector("ul");
+        const tasks = [];
+        
+        button.addEventListener("click", (e) => {
+            e.preventDefault();
+            const task = input.value;
+            tasks.push(task)
+            input.value = "";
+
+            const renderTask = () => {
+                ul.innerHTML = "";
+                tasks.forEach((task, index) => {
+                    const liElement = document.createElement("li");
+                    liElement.innerText = task;
+                    ul.appendChild(liElement);
+                })
+            }
+
+            renderTask();
+        })
+    </script>
+</body>
+
+</html>

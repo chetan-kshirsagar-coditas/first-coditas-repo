@@ -1,0 +1,48 @@
+SmartCache
+==========
+
+Task
+----
+
+Implement the SmartCache<T> class and the polyfillAllSettled function in TypeScript.
+
+SmartCache<T>
+
+The class takes a FetcherFn<T> and an options object on construction.
+
+Constructor options:
+- ttl — time-to-live in milliseconds; cached entries expire after this duration
+- onCacheMiss — a callback fired whenever a key is fetched from the source (not from cache)
+- flushDebounceMs — the debounce delay for the flush() method
+
+Methods:
+- fetch(key: string): Promise<T> — returns the cached value if valid, otherwise calls the fetcher, stores the result, and fires onCacheMiss
+- fetchMany(keys: string[]): Promise<SettledResult<T>[]> — fetches multiple keys concurrently using your polyfillAllSettled (not the native one)
+- flush(): void — clears all cache entries; rapid successive calls are debounced into a single flush
+- getStats(): CacheStats — returns a snapshot of hit and miss counts
+
+polyfillAllSettled<T>
+
+Implement Promise.allSettled from scratch. It must:
+- Accept an array of Promises
+- Return a Promise that resolves with an array of SettledResult<T> objects
+- Never reject — each result is either { status: 'fulfilled', value: T } or { status: 'rejected', reason: unknown }
+
+
+Example Usage
+-------------
+
+const fetcher: FetcherFn<string> = async (key) => `data-for-${key}`;
+
+const cache = new SmartCache(fetcher, {
+  ttl: 5000,
+  onCacheMiss: (key) => console.log(`Cache miss: ${key}`),
+  flushDebounceMs: 300,
+});
+
+const result = await cache.fetch('user:42');   // triggers onCacheMiss
+const cached = await cache.fetch('user:42');   // served from cache
+const results = await cache.fetchMany(['a', 'b', 'c']);
+cache.flush();  // debounced
+cache.flush();  // ignored
+console.log(cache.getStats()); // { hits: 1, misses: 4 }

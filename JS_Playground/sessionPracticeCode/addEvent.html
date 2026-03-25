@@ -18,13 +18,13 @@
         }
 
         //callbacks
+        const tester = () => alert("event");
         const logHi = () => alert("button is clicked !!");
         const keyPress = (e) => console.log("" + e.target.value);
 
         //eventListeners
         addEventListener(document.querySelector("button"), "onclick", logHi);
         addEventListener(document.querySelector("input"), "onkeyup", keyPress);
-
     </script>
 </body>
 

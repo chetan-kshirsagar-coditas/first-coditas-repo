@@ -1,0 +1,15 @@
+*{
+    margin: 0;
+}
+.margin{
+    padding: 10px;
+    margin: 20px;
+    border: 2px solid black;
+    background-color: aqua;
+}
+
+.margin-parent{
+    padding: 12px;
+    border: 1px solid black;
+}
+

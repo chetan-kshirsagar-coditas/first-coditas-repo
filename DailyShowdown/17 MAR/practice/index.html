@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StoryBoard</title>
+
+    <style>
+        .story{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <section class="btns">
+            <button>Scary Story</button>
+            <button>Funny Story</button>
+            <button>Adventure Story</button>
+        </section>
+        <section class="storyDisplay">
+            <p class="scary-story story">
+                <strong>Scary</strong>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum, minus?
+            </p>
+            <p class="funny-story story">
+                <strong>Funny</strong>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum, minus?
+            </p>
+            <p class="adventure-story story">
+                <strong>Adventure</strong>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum, minus?
+            </p>
+        </section>
+    </main>
+
+    <script>
+        const btns = document.querySelectorAll("button");
+        const stories = document.querySelectorAll("p");
+
+        const scaryBtn = btns[0];
+        const funnyBtn = btns[1];
+        const adventureBtn = btns[2];
+
+        const scaryStory = stories[0];
+        const funnyStory = stories[1];
+        const adventureStory = stories[2];
+
+        scaryBtn.addEventListener("click", () => {
+            scaryStory.classList.remove("story");
+            funnyStory.classList.add("story");
+            adventureStory.classList.add("story");
+        })
+        funnyBtn.addEventListener("click", () => {
+            funnyStory.classList.remove("story");
+            scaryStory.classList.add("story");
+            adventureStory.classList.add("story");
+        })
+        adventureBtn.addEventListener("click", () => {
+            adventureStory.classList.remove("story");
+            scaryStory.classList.add("story");
+            funnyStory.classList.add("story");
+        })
+    </script>
+</body>
+</html>

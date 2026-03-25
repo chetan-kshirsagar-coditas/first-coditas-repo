@@ -1,0 +1,43 @@
+#id{
+    color: red;
+}
+.class{
+    color: blue;
+}
+div{
+    color: pink;
+}
+
+/* combinators */
+
+.red.blue {
+    color: purple;
+}
+
+section#section.red.blue{
+    color: rgb(135, 80, 13);
+}
+
+/* child : use space : any level  */
+
+.grandparent p {
+    color: blueviolet;
+}
+
+/* use > for direct child */
+
+.child > p{
+    color: aqua;
+}
+
+/* use + next immediate sibling selection */
+
+.first + div {
+    color: cadetblue;
+}
+
+/* for all use ~ */
+
+.first ~ div {
+    color: chartreuse;
+}
