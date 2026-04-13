@@ -1,0 +1,30 @@
+teams = [
+    {
+        teamName:
+        player1
+        player1
+        player1
+        player1
+    }
+    {
+        teamName:
+        player1
+        player1
+        player1
+        player1
+    }
+    {
+        teamName:
+        player1
+        player1
+        player1
+        player1
+    }
+    {
+        teamName:
+        player1
+        player1
+        player1
+        player1
+    }
+]

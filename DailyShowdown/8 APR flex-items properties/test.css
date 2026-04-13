@@ -1,0 +1,18 @@
+body{
+    font-family: cursive;
+    background-color: rgb(248, 228, 221);
+    display: flex;
+    /* align-items: center; */
+    /* justify-content: center; */
+}
+header{
+    width: 100%;
+    color: coral;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(251, 235, 230);
+    border: 8px solid white;
+    box-shadow: 0 0 8px 2px coral;
+    padding: 1rem;
+}

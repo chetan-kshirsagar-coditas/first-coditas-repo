@@ -2417,3 +2417,61 @@ const all = (promises) => {
 // //// Expected output: Array [3, 42, "foo"]
 // console.log(await all([promise1, promise2, promise3]).then(res => res));
 
+// E(x) = (ai * b) mod m
+// const encode = (phrase, key) => {
+//   let cipher = "";
+//   for(const ch of phrase){
+//     const encCode = ((key.a * ch.charCodeAt(0) - 97) + key.b) % 26;
+//     cipher += String.fromCharCode((encCode + 96));
+//   }
+//   return cipher;
+// };
+
+// console.log(encode('no', { a: 15, b: 18 }));
+
+
+// function* idMaker() {
+//   let index = 0;
+//   while (true) {
+//     yield index++;
+//   }
+// }
+
+// const gen = idMaker();
+
+// console.log(gen.next().value); // 0
+// console.log(gen.next().value); // 1
+// console.log(gen.next().value); // 2
+// console.log(gen.next().value); // 3
+// …
+
+// const generatorObject = (function* () {
+//   yield 1;
+//   yield 2;
+//   yield 3;
+// })();
+
+// console.log("[Symbol.iterator]" in generatorObject);
+// console.log(generatorObject.propertyIsEnumerable("[Symbol.iterator]"));
+// console.log(generatorObject.hasOwnProperty("[Symbol.iterator]"));
+
+// const array = [];
+// console.log("[Symbol.iterator]" in array);
+// console.log(typeof generatorObject.next);
+// "function" — it has a next method (which returns the right result), so it's an iterator
+
+// console.log(typeof generatorObject[Symbol.iterator]);
+// "function" — it has a [Symbol.iterator] method (which returns the right iterator), so it's an iterable
+
+// console.log(generatorObject[Symbol.iterator]() === generatorObject);
+// true — its [Symbol.iterator] method returns itself (an iterator), so it's an iterable iterator
+
+
+
+
+//Prototype talks
+function* genFunc() {}
+const gen = genFunc();
+const proto = Object.getPrototypeOf;
+console.log(proto(gen) === genFunc.prototype); // true
+console.log(proto(proto(gen)) === GeneratorFunctionPrototype.prototype); // true

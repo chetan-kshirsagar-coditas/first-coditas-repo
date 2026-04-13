@@ -1,0 +1,6 @@
+order: Changes the order of items without altering the source order.
+flex-grow: Allows an item to grow to fill available space.
+flex-shrink: Allows an item to shrink if there's insufficient space.
+flex-basis: Defines the initial size of an item.
+flex: Shorthand for  flex-grow  ,  flex-shrink  , and  flex-basis  .
+align-self: Aligns a single item within the flex container.

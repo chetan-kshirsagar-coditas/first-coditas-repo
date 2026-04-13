@@ -1,0 +1,48 @@
+* {
+    margin: 0;
+}
+:root{
+    --border-size: 2px;
+}
+
+main {
+    background-color: rgba(0, 0, 0, 0.4);
+    padding: 50px;
+}
+
+section {
+    position: relative;
+    border: var(--border-size) solid;
+    padding: 50px;
+    width: 0;
+}
+
+div {
+    position: absolute;
+    border: 20px solid transparent;
+}
+
+section div:nth-child(1) {
+    border-top-color: red;
+    top: calc(100% + var(--border-size));
+    right: -2px;
+
+}
+
+section div:nth-child(2) {
+    border-right-color: yellow;
+    right: calc(100% + var(--border-size));
+    bottom: -2px;
+}
+
+section div:nth-child(3) {
+    border-bottom-color: greenyellow;
+    bottom: calc((100% + var(--border-size)));
+    left: -2px;
+}
+
+section div:nth-child(4) {
+    border-left-color: rgb(99, 99, 234);
+    left: calc(100% + var(--border-size));
+    top: -2px;
+}

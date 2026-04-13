@@ -1,0 +1,24 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    /* background-color: coral; */
+}
+main{
+    display: flex;
+    padding: 1rem;
+    justify-content: space-between;
+    flex-grow: 1;
+    background-color: aquamarine;
+}
+main div{
+    padding: 3rem;
+    background-color: rgb(20, 21, 21);
+}
+header, footer{
+  background-color: red;
+}

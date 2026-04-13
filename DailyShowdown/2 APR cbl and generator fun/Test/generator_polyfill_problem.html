@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Assignment — Generator Polyfill in TypeScript</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: system-ui, -apple-system, sans-serif; background: #f9f9f7; color: #1a1a18; padding: 2rem; }
+  .page { max-width: 720px; margin: 0 auto; background: #fff; border: 1px solid #e0dfd7; border-radius: 12px; padding: 2.5rem 3rem; }
+  .ps-header { border-bottom: 1px solid #e0dfd7; padding-bottom: 1.2rem; margin-bottom: 1.8rem; }
+  .label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: #888; margin-bottom: 6px; }
+  h1 { font-size: 22px; font-weight: 600; margin-bottom: 12px; }
+  .meta { display: flex; gap: 8px; flex-wrap: wrap; }
+  .badge { font-size: 12px; padding: 3px 10px; border-radius: 99px; border: 1px solid; }
+  .badge-purple { background: #EEEDFE; color: #3C3489; border-color: #AFA9EC; }
+  .badge-amber  { background: #FAEEDA; color: #633806; border-color: #EF9F27; }
+  .badge-teal   { background: #E1F5EE; color: #085041; border-color: #5DCAA5; }
+  h2 { font-size: 17px; font-weight: 600; margin: 2rem 0 0.5rem; }
+  h3 { font-size: 14px; font-weight: 600; color: #555; margin: 1.2rem 0 0.4rem; }
+  p { font-size: 14px; line-height: 1.75; margin-bottom: 0.6rem; }
+  ul, ol { padding-left: 1.5rem; margin: 0.4rem 0 0.8rem; }
+  li { font-size: 14px; line-height: 1.75; margin-bottom: 0.25rem; }
+  code { font-family: 'SF Mono', 'Fira Mono', monospace; font-size: 12.5px; background: #f4f3ef; padding: 1px 5px; border-radius: 4px; border: 1px solid #e0dfd7; }
+  .hint-box { background: #f4f3ef; border-left: 3px solid #5DCAA5; padding: 10px 14px; margin: 0.6rem 0; border-radius: 0 6px 6px 0; }
+  .hint-box p { margin: 0; font-size: 13px; color: #555; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 0.8rem 0; }
+  th { text-align: left; font-weight: 600; padding: 7px 10px; background: #f4f3ef; border-bottom: 1px solid #e0dfd7; }
+  td { padding: 7px 10px; border-bottom: 1px solid #e0dfd7; vertical-align: top; }
+  tr:last-child td { border-bottom: none; font-weight: 600; }
+  hr { border: none; border-top: 1px solid #e0dfd7; margin: 1.8rem 0; }
+  strong { font-weight: 600; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="ps-header">
+    <p class="label">Assignment</p>
+    <h1>Implement a generator function polyfill in TypeScript</h1>
+    <div class="meta">
+      <span class="badge badge-purple">TypeScript</span>
+      <span class="badge badge-amber">Intermediate</span>
+      <span class="badge badge-teal">Iterator protocol</span>
+    </div>
+  </div>
+
+  <h2>Background</h2>
+  <p>JavaScript's <code>function*</code> syntax and the <code>yield</code> keyword are handled by the compiler/runtime. In environments that don't support generators natively, we need to emulate their behaviour using plain functions and a state machine.</p>
+  <p>Your task is to implement a <strong>generator polyfill</strong> from scratch — without using <code>function*</code>, <code>yield</code>, or any generator-related built-ins.</p>
+
+  <hr>
+
+  <h2>Task</h2>
+  <p>Implement the following in TypeScript:</p>
+
+  <h3>Part 1 — Core types (10 marks)</h3>
+  <p>Define the TypeScript interfaces for:</p>
+  <ul>
+    <li><code>IteratorResult&lt;T, TReturn&gt;</code> — the object returned by <code>.next()</code></li>
+    <li><code>Generator&lt;T, TReturn, TNext&gt;</code> — with <code>.next()</code>, <code>.return()</code>, <code>.throw()</code>, and <code>[Symbol.iterator]()</code></li>
+  </ul>
+
+  <h3>Part 2 — State machine (20 marks)</h3>
+  <p>Implement a <code>createGenerator(steps)</code> factory function that:</p>
+  <ul>
+    <li>Tracks state across four phases: <code>Created</code>, <code>Running</code>, <code>Suspended</code>, <code>Completed</code></li>
+    <li>Advances through steps on each <code>.next()</code> call</li>
+    <li>Passes the value from <code>.next(v)</code> back into the current step (two-way communication)</li>
+    <li>Throws an error if <code>.next()</code> is called while the generator is already running</li>
+  </ul>
+
+  <h3>Part 3 — Exit methods (10 marks)</h3>
+  <p>Implement <code>.return(value)</code> and <code>.throw(error)</code> such that:</p>
+  <ul>
+    <li><code>.return(v)</code> immediately completes the generator and returns <code>{ value: v, done: true }</code></li>
+    <li><code>.throw(err)</code> marks the generator as completed and re-throws the error</li>
+    <li>Any call to <code>.next()</code> after completion returns <code>{ value: undefined, done: true }</code></li>
+  </ul>
+
+  <h3>Part 4 — Iterable protocol (10 marks)</h3>
+  <p>Ensure your generator object is iterable — it must work correctly with:</p>
+  <ul>
+    <li><code>for...of</code> loops</li>
+    <li>Spread syntax: <code>[...gen]</code></li>
+    <li>Array destructuring: <code>const [a, b] = gen</code></li>
+  </ul>
+
+  <hr>
+
+  <h2>Constraints</h2>
+  <ul>
+    <li>You may <strong>not</strong> use <code>function*</code>, <code>yield</code>, or any generator built-in</li>
+    <li>You may not use <code>async/await</code></li>
+    <li>All code must be valid TypeScript with strict mode enabled</li>
+    <li>No external libraries</li>
+  </ul>
+
+  <hr>
+
+  <h2>Test cases</h2>
+  <p>Your implementation must pass all of the following:</p>
+  <ol>
+    <li>A range generator <code>makeRange(0, 3)</code> yields <code>0, 1, 2</code> then returns <code>done: true</code></li>
+    <li>Calling <code>.next(v)</code> passes <code>v</code> into the current step</li>
+    <li>Calling <code>.return(42)</code> mid-sequence gives <code>{ value: 42, done: true }</code> and exhausts the generator</li>
+    <li><code>for (const n of makeRange(0, 5))</code> iterates all five values without error</li>
+    <li>Calling <code>.next()</code> on a completed generator always returns <code>{ value: undefined, done: true }</code></li>
+  </ol>
+
+  <hr>
+
+  <h2>Marks breakdown</h2>
+  <table>
+    <tr><th>Part</th><th>Criteria</th><th style="text-align:right">Marks</th></tr>
+    <tr><td>1</td><td>Correct and complete TypeScript interfaces</td><td style="text-align:right">10</td></tr>
+    <tr><td>2</td><td>State machine logic and two-way value passing</td><td style="text-align:right">20</td></tr>
+    <tr><td>3</td><td><code>.return()</code> and <code>.throw()</code> behaviour</td><td style="text-align:right">10</td></tr>
+    <tr><td>4</td><td>Iterable protocol (<code>for...of</code>, spread, destructuring)</td><td style="text-align:right">10</td></tr>
+    <tr><td></td><td><strong>Total</strong></td><td style="text-align:right"><strong>50</strong></td></tr>
+  </table>
+
+  <hr>
+
+  <h2>Hints</h2>
+  <div class="hint-box"><p>Think of a generator as a state machine with four states. Draw the transitions before you write any code.</p></div>
+  <div class="hint-box"><p>Each "step" is a function that receives the value passed to <code>.next()</code> and returns an <code>IteratorResult</code>.</p></div>
+  <div class="hint-box"><p>The <code>[Symbol.iterator]()</code> method should return <code>this</code> — the generator is both an iterator and an iterable.</p></div>
+  <div class="hint-box"><p>Use a <code>const enum</code> for your state values — it keeps the code readable and compiles away at runtime.</p></div>
+</div>
+</body>
+</html>

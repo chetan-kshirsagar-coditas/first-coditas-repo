@@ -1,0 +1,64 @@
+allTeam = {
+    teamName : {
+        
+        ///
+        ///
+        ///
+        ///
+    }
+    team : {
+        
+        ///
+        ///
+        ///
+        ///
+    }
+    team : {
+        
+        ///
+        ///
+        ///
+        ///
+    }
+}
+
+
+allStandings = {
+    groupNumber1: {
+        team1: {
+            wins,
+            lose,
+            draw,
+            totalP
+        },
+        team2: {
+            wins,
+            lose,
+            draw,
+            totalP
+        }
+    }
+}
+
+
+FixtureDetails => 
+
+court Number
+Time and Data
+team1Details = {
+    GroupNo
+team1Name
+    //1
+    //2
+    //3
+    //4
+}
+team2Details = {
+    GroupNo
+team2Name
+    //1
+    //2
+    //3
+    //4
+}
+

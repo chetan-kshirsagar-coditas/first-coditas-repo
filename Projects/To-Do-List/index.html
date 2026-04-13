@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To-Do-List</title>
+
 </head>
 
 <body>
@@ -17,35 +18,38 @@
         <form>
             <input type="text" placeholder="Enter Task">
             <button>Add</button>
-            <ul>
-
-            </ul>
+            <ul class="display"></ul>
         </form>
     </main>
 
     <script>
         const input = document.querySelector("input");
         const button = document.querySelector("button");
-        const ul = document.querySelector("ul");
-        const tasks = [];
-        
+        const ul = document.querySelector(".display");
+        let tasks = [];
+
+        const renderTask = () => {
+            ul.innerHTML = "";
+            tasks.forEach((task, index) => {
+                const liElement = `<li>${task} <button onclick="deleteTask(${index})">delete</button></li>`;
+                ul.innerHTML += liElement;
+            });
+        };
+
         button.addEventListener("click", (e) => {
             e.preventDefault();
-            const task = input.value;
-            tasks.push(task)
-            input.value = "";
-
-            const renderTask = () => {
-                ul.innerHTML = "";
-                tasks.forEach((task, index) => {
-                    const liElement = document.createElement("li");
-                    liElement.innerText = task;
-                    ul.appendChild(liElement);
-                })
+            if (input.value.trim() !== "") {
+                tasks.push(input.value);
+                input.value = "";
+                renderTask();
             }
+        });
 
+  
+        deleteTask = (index) => {
+            tasks.splice(index, 1); 
             renderTask();
-        })
+        };
     </script>
 </body>
 

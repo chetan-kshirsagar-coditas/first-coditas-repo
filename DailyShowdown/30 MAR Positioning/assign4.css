@@ -1,0 +1,22 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header {
+    width: 100%;
+    padding: 0.5rem;
+}
+
+.menu{
+    position: relative;
+}
+.options{
+    position: absolute;
+    display: none;
+}
+
+.menu:hover .options{
+    display: block;
+}

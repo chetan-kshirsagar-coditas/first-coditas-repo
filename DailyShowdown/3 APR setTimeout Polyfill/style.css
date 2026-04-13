@@ -1,0 +1,18 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+section{
+    background-color: rgb(196, 237, 224);
+    padding: 8px;
+}
+section div{
+    border-bottom: thin solid;
+}
+section div:nth-child(1){
+    background-color: aqua;
+    padding: 4px;
+    position: sticky;
+    top: 0;
+}
