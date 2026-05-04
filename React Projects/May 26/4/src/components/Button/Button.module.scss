@@ -1,0 +1,16 @@
+.button{
+    padding: 0.25rem 1.25rem;
+    border: thin solid blue;
+    border-radius: 4px;
+    color: var(--color, blue);
+    cursor: pointer;
+}
+
+.primaryButton{
+    @extend .button;
+    --color: coral;
+}
+.secondaryButton{
+    @extend .button;
+    --color: red;
+}
